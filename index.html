@@ -7,18 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       min-height: 100vh;
       width: 100vw;
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, #ffcedb 0%, #c4fff9 100%);
       overflow-x: hidden;
       box-sizing: border-box;
-    }
-    body, html {
       height: 100%;
     }
-
     .main-container {
       z-index: 2;
       background: rgba(255,255,255,0.93);
@@ -28,18 +26,20 @@
       text-align: center;
       backdrop-filter: blur(1.5px);
       border: 2.2px solid rgba(250,140,193, .13);
-      min-height: 96vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       max-width: 520px;
       padding: 38px 24px 38px 24px;
       position: relative;
+      height: 100vh;
     }
     @media (max-width:600px) {
       .main-container {
-        min-height: unset;
-        margin: 16vw 0 22vw 0;
+        min-height: 100vh;
+        margin: 0;
+        height: 100vh;
         box-shadow: 0 7px 18px 7px #feeef8d8;
         padding: 24px 8px 30vw 8px;
       }
@@ -58,7 +58,8 @@
     .footer{margin-top:25px;color:#ac2e7c;font-size:1.09em;font-weight:700;letter-spacing:1.7px;text-shadow:0px 2px 8px #fcb4e055;}
     #cuteModal{display:none;position:fixed;z-index:101;left:0;top:0;right:0;bottom:0;background:rgba(253,180,213,.87);align-items:center;justify-content:center;animation:modal-in 0.6s;}
     #cuteModal.active{display:flex;animation:modal-in 0.5s;}
-    @keyframes modal-in{0%{opacity:0;transform:scale(0.62);}80%{opacity:1;transform:scale(1.06);}100%{opacity:1;transform:scale(1);}}
+    @keyframes modal-in{0%{opacity:0;transform:scale(0.62);}80%{opacity:1;transform:scale(1.06);}100%{opacity:1;transform:scale(1);}
+    }
     #cuteModal .modal-box{background:linear-gradient(110deg,#fff 72%,#ffe4f7 100%);border-radius:27px;padding:36px 30px 36px 30px;text-align:center;box-shadow:0 7px 30px 9px #feabd4cc;border:2.2px solid #fd6eaeb8;backdrop-filter:blur(2.5px);position:relative;overflow:hidden;min-width:260px;max-width:90vw;}
     #cuteModal .modal-box .modal-msg{font-family:Pacifico,cursive;color:#d61b66;margin:23px 0 18px;font-size:1.18em;letter-spacing:1.2px;text-shadow:0px 2px 10px #fad2e799;}
     #cuteModal .modal-box .magic-row{font-size:2.1em;margin-bottom:8px;animation:magic-stars 1.8s linear infinite;}
@@ -66,15 +67,16 @@
     #cuteModal .btn-cute{margin:14px auto 2px;font-size:1em;padding:11px 29px;display:inline-block;}
     .heart-rain{pointer-events:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:11;overflow:hidden;}
     .heart-drop{position:absolute;font-size:1.5em;color:#ff249e;opacity:0.8;pointer-events:none;animation:heart-fall 1.8s linear forwards;filter:drop-shadow(0 3px 6px #fc87f2ac);}
-    @keyframes heart-fall{0%{transform:translateY(-36px) scale(1);}20%{opacity:1;}80%{opacity:.94;}100%{transform:translateY(170px) scale(.7);opacity:0;}}
+    @keyframes heart-fall{0%{transform:translateY(-36px) scale(1);}20%{opacity:1;}80%{opacity:.94;}100%{transform:translateY(170px) scale(.7);opacity:0;}
+    }
     .response-wrapper{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;}
     .response-input{flex:1;min-width:70px;max-width:190px;border-radius:25px;border:1.5px solid #ffb7eb5d;padding:7px 12px;font-size:1em;font-family:inherit;outline:none;background:#fffafc;box-shadow:0 1px 8px #fdcefd22;transition:box-shadow 0.2s;}
     .response-input:focus{box-shadow:0 4px 15px #feabd4a1;border-color:#fd71cbD1;}
     .btn-send{background:linear-gradient(90deg,#fd71cb 17%,#dfa2fc 80%);color:#fff;border:none;border-radius:20px;font-size:1em;font-family:Pacifico,cursive;padding:7px 15px;cursor:pointer;box-shadow:0 1px 8px #dfa2fc99;transition:background .21s,transform .13s;}
     .btn-send:hover{background:linear-gradient(90deg,#fa288b 32%,#f794d9 80%);color:#fff;transform:scale(1.05);}
     .user-message{background:linear-gradient(95deg,#fd6eae11 10%,#b7eaff22 98%);border-radius:17px;color:#d61b66;margin:11px auto 0;padding:10px 16px;max-width:90%;font-size:1em;font-family:'Roboto',sans-serif;font-weight:700;box-shadow:0 1px 7px #fa288b25;letter-spacing:1.1px;display:inline-block;animation:msg-pop .7s;}
-    @keyframes msg-pop{0%{transform:scale(0.72);}80%{transform:scale(1.07);}100%{transform:scale(1);}}
-    /* Mobile scroll down hint */
+    @keyframes msg-pop{0%{transform:scale(0.72);}80%{transform:scale(1.07);}100%{transform:scale(1);}
+    }
     .scroll-hint {
       display: none;
       position: fixed;
@@ -90,6 +92,11 @@
       animation: scroll-bounce 1.2s infinite;
       opacity: .84;
       text-shadow: 0 2px 10px #fff1f7a3;
+      transition:opacity 0.8s;
+    }
+    .scroll-hint.hide {
+      opacity: 0 !important;
+      pointer-events: none;
     }
     @keyframes scroll-bounce {
       0%, 100% {transform: translateY(0);}
@@ -117,7 +124,7 @@
     <div class="footer">~ Tumhara Bhai, <span style="color:#ff4b7a;">Arpan Jain</span></div>
   </div>
   <!-- Mobile scroll hint -->
-  <div class="scroll-hint">
+  <div class="scroll-hint" id="scrollHint">
     ↓ Scroll Down For More Magic ↓
   </div>
   <!-- Popup Modal -->
@@ -172,7 +179,6 @@
     let stars=[];for(let i=0;i<85;i++){stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:Math.random()*1.5+0.45,alpha:Math.random()*0.65+0.25});}
     function drawStars(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let s of stars){ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,2*Math.PI);ctx.fillStyle=`rgba(255,255,255,${s.alpha})`;ctx.fill();}requestAnimationFrame(drawStars);}drawStars();
 
-    // Modal, heart-rain
     function showPopup(){
       document.getElementById('cuteModal').classList.add('active');
       let rain=document.querySelector('.heart-rain');rain.innerHTML='';
@@ -188,7 +194,7 @@
       rain.style.display='block';
     }
     function hidePopup(){let modal=document.getElementById('cuteModal');modal.classList.remove('active');}
-    // User response logic + WhatsApp SMS trigger
+
     function sendResponse(){
       let box=document.getElementById('userMessages');
       let input=document.getElementById('responseInput');
@@ -197,8 +203,7 @@
         msg.className='user-message';
         msg.textContent=input.value;
         box.appendChild(msg);
-        // --- Send Reply to WhatsApp via Render Backend ---
-        fetch('https://pagal-sister.onrender.com/send-wa',{
+        fetch('https://pagal-sister.onrender.com/send-mail', {
           method:'POST',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify({message:input.value})
@@ -214,6 +219,19 @@
       }
     }
     document.getElementById('responseInput').addEventListener('keydown',function(e){if(e.key==='Enter'){sendResponse();}});
+
+    // Mobile scroll hint hide on first scroll only
+    (function(){
+      var hint = document.getElementById('scrollHint');
+      function hideHintOnScroll() {
+        if(window.scrollY > 8) {
+          hint.classList.add('hide');
+          window.removeEventListener('scroll', hideHintOnScroll);
+        }
+      }
+      window.addEventListener('scroll', hideHintOnScroll);
+    })();
+
   </script>
 </body>
 </html>

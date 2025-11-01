@@ -3,20 +3,19 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
-// Use CORS for frontend-backend communication
 app.use(cors());
 app.use(express.json());
 
-// Use environment variables for security
-const EMAIL_USER = process.env.EMAIL_USER; // Your Gmail address for sending
-const EMAIL_PASS = process.env.EMAIL_PASS; // App password (not your Gmail login password)
-const EMAIL_TO   = process.env.EMAIL_TO;   // Your receiving email (can be same as user or another)
+// Use environment variables for SendGrid
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+const EMAIL_FROM = process.env.EMAIL_FROM;
+const EMAIL_TO = process.env.EMAIL_TO;
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: 'SendGrid',
   auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS,
+    user: 'apikey', // literally "apikey"
+    pass: SENDGRID_API_KEY
   }
 });
 
@@ -25,7 +24,7 @@ app.post('/send-mail', (req, res) => {
   if (!message) return res.status(400).json({ error: 'No message provided.' });
 
   const mailOptions = {
-    from: `"Sister Reply App" <${EMAIL_USER}>`,
+    from: `"Sister Reply App" <${EMAIL_FROM}>`,
     to: EMAIL_TO,
     subject: "Sister's Reply!",
     text: `Sister's Reply:\n${message}`,
@@ -42,4 +41,4 @@ app.post('/send-mail', (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log('Email server running on port', PORT));
+app.listen(PORT, () => console.log('SendGrid Email server running on port', PORT));
