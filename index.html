@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Cute Sister ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; min-height:100vh; font-family:'Roboto',sans-serif;
+      background:linear-gradient(135deg, #ffcedb 0%, #c4fff9 100%);
+      overflow-x:hidden; position:relative;}
+    .main-container{position:relative;z-index:2;max-width:520px;padding:38px 22px 32px 22px;background:rgba(255,255,255,0.93);border-radius:30px;box-shadow:0 8px 50px rgba(255,86,163,0.18);margin:46px auto;text-align:center;backdrop-filter:blur(1.5px);border:2.2px solid rgba(250,140,193, .13);}
+    .heart-row{margin:18px 0 12px;}
+    .heart{display:inline-block;font-size:2.2em;color:#ff4098;margin:0 9px;animation:heartbeat 1.15s infinite;filter:drop-shadow(0 0 4px #fe4bb4a8);}
+    .heart:nth-child(2){animation-delay:.3s;}.heart:nth-child(3){animation-delay:.7s;}
+    @keyframes heartbeat{0%,100%{transform:scale(1);}30%,70%{transform:scale(1.19);}}
+    .heading{font-family:'Pacifico',cursive;color:#d61b66;font-size:2.2em;margin:12px 0 12px;text-shadow:0px 2px 8px #ff89e54d;}
+    .caption{font-size:1.15em;margin:15px 0;color:#515151;text-shadow:0px 1px 6px #cdb4db33;}
+    .love-message{background:linear-gradient(90deg,#fd6eae 8%,#b7eaff 92%);color:#fff;font-size:1.34em;border-radius:13px;font-weight:bold;display:inline-block;padding:13px 28px;margin:22px 0 17px 0;letter-spacing:1px;box-shadow:0 3px 14px #ffd1ffd6;border:1.5px solid #ffafcc5d;animation:love-pop 1s;}
+    @keyframes love-pop{0%{transform:scale(0);}80%{transform:scale(1.07);}100%{transform:scale(1);}}
+    .emoji-row{font-size:1.7em;margin:9px 0 19px 0;letter-spacing:5px;text-shadow:0px 1px 5px #f0b1e2a8;}
+    .btn-cute{background:linear-gradient(100deg,#f797a8 10%,#fdc8c3 92%);border:none;color:#fff;font-size:1.08em;padding:13px 40px;border-radius:60px;font-family:Pacifico,cursive;margin:17px 0 12px;box-shadow:0 2px 18px #ff72ae44;cursor:pointer;transition:background 0.23s,transform 0.17s,box-shadow 0.23s;letter-spacing:0.7px;}
+    .btn-cute:hover{background:linear-gradient(90deg,#fad0c4 12%,#ffd1ff 94%);color:#ff249e;transform:scale(1.09) translateY(-2px);box-shadow:0 2px 30px #feabd499;}
+    .footer{margin-top:25px;color:#ac2e7c;font-size:1.09em;font-weight:700;letter-spacing:1.7px;text-shadow:0px 2px 8px #fcb4e055;}
+    #cuteModal{display:none;position:fixed;z-index:101;left:0;top:0;right:0;bottom:0;background:rgba(253,180,213,.87);align-items:center;justify-content:center;animation:modal-in 0.6s;}
+    #cuteModal.active{display:flex;animation:modal-in 0.5s;}
+    @keyframes modal-in{0%{opacity:0;transform:scale(0.62);}80%{opacity:1;transform:scale(1.06);}100%{opacity:1;transform:scale(1);}}
+    #cuteModal .modal-box{background:linear-gradient(110deg,#fff 72%,#ffe4f7 100%);border-radius:27px;padding:36px 30px 36px 30px;text-align:center;box-shadow:0 7px 30px 9px #feabd4cc;border:2.2px solid #fd6eaeb8;backdrop-filter:blur(2.5px);position:relative;overflow:hidden;min-width:260px;max-width:90vw;}
+    #cuteModal .modal-box .modal-msg{font-family:Pacifico,cursive;color:#d61b66;margin:23px 0 18px;font-size:1.18em;letter-spacing:1.2px;text-shadow:0px 2px 10px #fad2e799;}
+    #cuteModal .modal-box .magic-row{font-size:2.1em;margin-bottom:8px;animation:magic-stars 1.8s linear infinite;}
+    @keyframes magic-stars{0%,100%{color:#dfa2fc;}50%{color:#fd71cb;}}
+    #cuteModal .btn-cute{margin:14px auto 2px;font-size:1em;padding:11px 29px;display:inline-block;}
+    .heart-rain{pointer-events:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:11;overflow:hidden;}
+    .heart-drop{position:absolute;font-size:1.5em;color:#ff249e;opacity:0.8;pointer-events:none;animation:heart-fall 1.8s linear forwards;filter:drop-shadow(0 3px 6px #fc87f2ac);}
+    @keyframes heart-fall{0%{transform:translateY(-36px) scale(1);}20%{opacity:1;}80%{opacity:.94;}100%{transform:translateY(170px) scale(.7);opacity:0;}}
+    .response-wrapper{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;}
+    .response-input{flex:1;min-width:70px;max-width:190px;border-radius:25px;border:1.5px solid #ffb7eb5d;padding:7px 12px;font-size:1em;font-family:inherit;outline:none;background:#fffafc;box-shadow:0 1px 8px #fdcefd22;transition:box-shadow 0.2s;}
+    .response-input:focus{box-shadow:0 4px 15px #feabd4a1;border-color:#fd71cbD1;}
+    .btn-send{background:linear-gradient(90deg,#fd71cb 17%,#dfa2fc 80%);color:#fff;border:none;border-radius:20px;font-size:1em;font-family:Pacifico,cursive;padding:7px 15px;cursor:pointer;box-shadow:0 1px 8px #dfa2fc99;transition:background .21s,transform .13s;}
+    .btn-send:hover{background:linear-gradient(90deg,#fa288b 32%,#f794d9 80%);color:#fff;transform:scale(1.05);}
+    .user-message{background:linear-gradient(95deg,#fd6eae11 10%,#b7eaff22 98%);border-radius:17px;color:#d61b66;margin:11px auto 0;padding:10px 16px;max-width:90%;font-size:1em;font-family:'Roboto',sans-serif;font-weight:700;box-shadow:0 1px 7px #fa288b25;letter-spacing:1.1px;display:inline-block;animation:msg-pop .7s;}
+    @keyframes msg-pop{0%{transform:scale(0.72);}80%{transform:scale(1.07);}100%{transform:scale(1);}}
+    @media (max-width:640px){.main-container{max-width:99%;padding:13px 5px;}.heading{font-size:1.18em;}.love-message{font-size:.97em;padding:8px 9px;}.emoji-row{font-size:1.15em;}#cuteModal .modal-box{padding:19px 6vw;}#cuteModal .modal-msg{font-size:1em;}.heart-rain .heart-drop{font-size:1em;}.response-input{min-width:38px;}}
+  </style>
+</head>
+<body>
+  <canvas class="stars"></canvas>
+  <div class="shooting-star"></div>
+  <div class="main-container shadow">
+    <div class="heart-row"><span class="heart">💖</span><span class="heart">💗</span><span class="heart">💖</span></div>
+    <div class="heading">My Cute Sister</div>
+    <div class="caption">Duniya ki sabse pyaari bhn ko — hamesha khush raho, smile karti raho 💕</div>
+    <div class="love-message">Love You Sister 💕</div>
+    <div class="emoji-row">✨🌙🥰🌠🦄</div>
+    <button class="btn-cute" onclick="showPopup()">Click for Magic!</button>
+    <div class="caption">Tu hai toh sab kuch mast hai! Tere bina life bland hai…</div>
+    <div class="footer">~ Tumhara Bhai, <span style="color:#ff4b7a;">Arpan Jain</span></div>
+  </div>
+  <!-- Popup Modal -->
+  <div id="cuteModal">
+    <div class="modal-box">
+      <div class="magic-row">✨🌟💘🌈✨</div>
+      <div class="modal-msg">
+        You are my shining star, best sister forever!<br>
+        <span style="font-size:.82em;color:#fa288b;">Always stay as lovely as you are!</span>
+      </div>
+      <div class="response-wrapper">
+        <input id="responseInput" type="text" class="response-input" maxlength="60" placeholder="Apna reply likho..."/>
+        <button class="btn-send" onclick="sendResponse()">Send</button>
+      </div>
+      <div id="userMessages"></div>
+      <button class="btn-cute" onclick="hidePopup()">Aww, Thank you Bhaiya!</button>
+      <div class="heart-rain"></div>
+    </div>
+  </div>
+  <script>
+    // Shooting stars animation
+    function randomInt(a,b){return a+Math.floor(Math.random()*(b-a));}
+    function createShootingStar(){
+      const star=document.createElement('div');
+      star.classList.add('shoot-star');
+      star.style.top=randomInt(0,window.innerHeight/3)+'px';
+      star.style.left=randomInt(0,window.innerWidth/1.4)+'px';
+      star.style.animationDelay=(Math.random()*3)+'s';
+      star.style.animationDuration=(1.1+Math.random()*1.3)+'s';
+      document.querySelector('.shooting-star').appendChild(star);
+      setTimeout(()=>star.remove(),1700);
+    }
+    setInterval(createShootingStar,930);
+    // Stars background
+    const canvas=document.querySelector('.stars');
+    const ctx=canvas.getContext('2d');
+    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+    window.addEventListener('resize',resize);resize();
+    let stars=[];for(let i=0;i<85;i++){stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:Math.random()*1.5+0.45,alpha:Math.random()*0.65+0.25});}
+    function drawStars(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let s of stars){ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,2*Math.PI);ctx.fillStyle=`rgba(255,255,255,${s.alpha})`;ctx.fill();}requestAnimationFrame(drawStars);}drawStars();
+    // Modal, heart-rain
+    function showPopup(){
+      document.getElementById('cuteModal').classList.add('active');
+      let rain=document.querySelector('.heart-rain');rain.innerHTML='';
+      for(let i=0;i<12;i++){
+        let delay=Math.random()*1.2+.1;
+        let heart=document.createElement('span');
+        heart.className='heart-drop';
+        heart.innerText=Math.random()>0.5?'💗':'💖';
+        heart.style.left=(12+Math.random()*70)+'%';
+        heart.style.top=(3+Math.random()*18)+'px';
+        heart.style.animationDelay=delay+'s';
+        rain.appendChild(heart);setTimeout(()=>heart.remove(),2200);}
+      rain.style.display='block';
+    }
+    function hidePopup(){let modal=document.getElementById('cuteModal');modal.classList.remove('active');}
+    // User response logic + WhatsApp SMS trigger
+    function sendResponse(){
+      let box=document.getElementById('userMessages');
+      let input=document.getElementById('responseInput');
+      if(input.value.trim().length>0){
+        let msg=document.createElement('div');
+        msg.className='user-message';
+        msg.textContent=input.value;
+        box.appendChild(msg);
+        // --- Send Reply to WhatsApp via Render Backend ---
+        fetch('https://YOUR_RENDER_URL/send-wa',{  // <<<-- Use your Render backend URL here!!
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({message:input.value})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          // Optionally: Notify user here
+        })
+        .catch(err=>{
+          // Optionally: Notify error
+        });
+        input.value="";box.scrollIntoView({behavior:"smooth",block:"end"});
+      }
+    }
+    document.getElementById('responseInput').addEventListener('keydown',function(e){if(e.key==='Enter'){sendResponse();}});
+  </script>
+</body>
+</html>
